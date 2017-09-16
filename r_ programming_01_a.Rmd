@@ -1,0 +1,113 @@
+---
+title: "R programming 01 – Data Science"
+author: "Marco Guado"
+date: "October 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Objective  
+It is to calculate the average contamination of sulfate or nitrate particles, based on the data obtained in 332 locations in the USA, each site has generated a monitoring file.  
+  
+Description  
+Each file contains several records, each record contains 4 variables:  
+• Date: date of observation in format YYYY-MM-DD (year-month-day)  
+• sulfate: the level of PM sulphate in air at that date (measured in micrograms per cubic meter)  
+• nitrate: the level of PM nitrate in air at that date (measured in micrograms per cubic meter)  
+• Id: file handle.  
+  
+Note. Note that many records do not contain data (NA) this is common in monitoring data.  
+  
+## Homework 1  
+  
+Develop a function to calculate the average contaminant by sulfate or nitrate, passing three parameters:  
+Parameter 1 = the directory where the files are.  
+Parameter 2 = the pollutant to be calculated; sulfate or nitrate.  
+Parametro3 = the list of files to process.  
+  
+## Development process:  
+1.	Setting up a working environment
+
+```{r, echo=TRUE}
+# we will use the RStudio IDE
+#setwd(“create a work folder”)
+
+getwd()
+
+list.files()
+
+# create a folder "specdata" and accommodate in this the 332 csv files
+#/specdata/001.csv
+#/specdata/…
+#/specdata/332.csv
+
+```
+  
+2.	We explore the data  
+To view the content, format and perform tests.  
+```{r, echo=TRUE}  
+# load the contents of the file into the variable file.temp.
+file.temp = read.csv(file="specdata/001.csv", header = TRUE, sep = ",")
+head(file.temp)
+```
+  
+We check that the variables are; Date, sulfate, nitrate and ID  
+We also check that there is no data for some NA dates.  
+  
+3. Algorithm to determine the level of contamination.  
+-Load the selected file.  
+-filtramos by a type of pollutant (sulphate or nitrate) to obtain only useful data, this data we store them in a vector. This vector will be incremented by each processed file.  
+At the end we calculate the mean with the data stored in the vector.  
+  
+```{r, echo=TRUE}  
+pollutantmean <- function(path.files, pollutant, id = 0) {
+  
+  #We store all file names
+  list.filenames <- list.files(path.files, pattern="*.csv")
+  
+  #numercia list that stores all values, useful to determine the median
+  list.values <- numeric()
+  
+  #this validation is useful if you enter as parameter id = 0
+  if(length(id) == 1){
+    if(id == 0){
+      id = 332
+    }
+  }
+  
+  for(i in c(id) ) {
+    
+    #file name processing
+    filename <- paste(path.files, list.filenames[i], sep = "/")
+    
+    #load the file contents
+    df.File <- read.csv(filename, head=TRUE, sep=",")
+    
+    #filter by sulfate or nitrate
+    if(pollutant == "sulfate"){
+      valores <- df.File$sulfate[!is.na(df.File$sulfate)]
+    }
+    else{
+      valores <- df.File$nitrate[!is.na(df.File$nitrate)]
+    }
+    
+    #It contains all values for each interaction
+    list.values <- append(list.values, valores)
+  }
+  
+  #calculation of the mean
+  return(mean(list.values))
+}
+
+```
+  
+Way to run the function 
+```{r, echo=TRUE}  
+#Pollutantmean ("enter the folder", "pollutant name", "file or #files"
+#example
+pollutantmean ("specdata", "sulfate", 1:10)
+
+```
