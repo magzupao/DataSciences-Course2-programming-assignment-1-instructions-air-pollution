@@ -171,4 +171,7 @@ plot(tmp$nobs.sulfate, tmp$nobs.nitrate)
 ```
   
   
-The correlation between the two variables is strong, if one variable grows the other also grows.
+The correlation between the two variables is strong, if one variable grows the other also grows.  
+  
+source code: https://github.com/magzupao/datascience01_a
+
