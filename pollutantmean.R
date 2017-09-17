@@ -1,3 +1,9 @@
+#####################################################################
+# programming assignment 1: Course Project
+# r-programming
+# Marco Guado Zavaleta, mguado@gmail.com
+# Octubre 2016
+#####################################################################
 pollutantmean <- function(path.files, pollutant, id = 0) {
   
   #We store all file names
