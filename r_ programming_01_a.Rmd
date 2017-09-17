@@ -1,14 +1,11 @@
 ---
-title: "R programming 01 – Data Science"
+title: "R programming, Air pollution – Data Science"
 author: "Marco Guado"
 date: "October 2016"
 output: html_document
 ---
 ![](magz.png)  
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
+  
 ## Objective  
 It is to calculate the average contamination of sulfate or nitrate particles, based on the data obtained in 332 locations in the USA, each site has generated a monitoring file.  
   
@@ -155,6 +152,7 @@ complete  <- function(path.files, id) {
 # Example
 tmp <- complete ("specdata", 1:10)
 tmp
+
 ```
 
 
