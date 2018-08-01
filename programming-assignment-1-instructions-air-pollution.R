@@ -1,11 +1,11 @@
-#####################################################################
-# Data Science Specialization
-# Marco Guado Zavaleta, mguado@gmail.com
-# Octubre 2016
-# Course 2:
-# programming-assignment-1-instructions-air-pollution
-#####################################################################
-
+#####################################################################  
+# Data Science Specialization  
+# Marco Guado Zavaleta, mguado@gmail.com  
+# Octubre 2016  
+# Course 2:  
+# programming-assignment-1-instructions-air-pollution  
+#####################################################################  
+  
 # We download the data to be processed.
 url = "https://d396qusza40orc.cloudfront.net/rprog%2Fdata%2Fspecdata.zip"
 download.file(url, "urlFileData.zip") 

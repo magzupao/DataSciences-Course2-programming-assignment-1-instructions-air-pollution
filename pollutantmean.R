@@ -1,12 +1,12 @@
-#####################################################################
-# Data Science Specialization
-# Marco Guado Zavaleta, mguado@gmail.com
-# Octubre 2016
-# Course 2:
-# programming-assignment-1-instructions-air-pollution
-# function
-#####################################################################
-
+#####################################################################  
+# Data Science Specialization  
+# Marco Guado Zavaleta, mguado@gmail.com  
+# Octubre 2016  
+# Course 2:  
+# programming-assignment-1-instructions-air-pollution  
+# function  
+#####################################################################  
+  
 pollutantmean <- function(path.files, pollutant, id = 0) {
   
   #We store all file names
