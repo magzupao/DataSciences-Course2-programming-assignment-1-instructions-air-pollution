@@ -5,18 +5,20 @@ date: "October 2016"
 output: html_document
 ---
 ![](magz.png)  
+    
+## Data Science Specialization - course 2
   
 ## Objective  
-It is to calculate the average contamination of sulfate or nitrate particles, based on the data obtained in 332 locations in the USA, each site has generated a monitoring file.  
+It calculates the average contamination of sulfate or nitrate particles, based on the data obtained in 332 locations in the USA, each site has generated a monitoring file.  
   
 Description  
-Each file contains several records, each record contains 4 variables:  
-• Date: date of observation in format YYYY-MM-DD (year-month-day)  
-• sulfate: the level of PM sulphate in air at that date (measured in micrograms per cubic meter)  
-• nitrate: the level of PM nitrate in air at that date (measured in micrograms per cubic meter)  
-• Id: file handle.  
+Each file contains several records, each record contains 4 variables:
+• Date: date of observation in format YYYY-MM-DD (year-month-day)
+• sulfate: the level of PM sulfate in the air at that date (measured in micrograms per cubic meter)
+• nitrate: the level of PM nitrate in the air at that date (measured in micrograms per cubic meter)
+• Id: file handle.    
   
-Note. Note that many records do not contain data (NA) this is common in monitoring data.  
+Note. Note that many records do not contain data (NA) this is common in monitoring data.    
   
 ## Homework 1  
   
@@ -24,40 +26,62 @@ Develop a function to calculate the average contaminant by sulfate or nitrate, p
 Parameter 1 = the directory where the files are.  
 Parameter 2 = the pollutant to be calculated; sulfate or nitrate.  
 Parametro3 = the list of files to process.  
+Development process:  
   
-## Development process:  
-1.	Setting up a working environment
-
+Setting up a working environment.  
+  
+1. We create a folder.  
+  
+mkdir XXXXX  
+cd XXXX  
+  
+2. We download the data to be processed.  
+  
 ```{r, echo=TRUE}
-# we will use the RStudio IDE
-#setwd(“create a work folder”)
 
-getwd()
+url = "https://d396qusza40orc.cloudfront.net/rprog%2Fdata%2Fspecdata.zip"
+download.file(url, "urlFileData.zip") 
+unzip("urlFileData.zip", exdir = "data") 
 
 list.files()
 
-# create a folder "specdata" and accommodate in this the 332 csv files
-#/specdata/001.csv
-#/specdata/…
-#/specdata/332.csv
+```
+  
+Comments:  
+The zip file we downloaded we put a random name (urlFileData.zip), we can put the same name, but in this case we have renamed it.  
+  
+unzip("urlFileData.zip", exdir = "data")  this command creates a "data" folder and downloads all the files there.  
+  
+3. We scanned the downloaded content.  
+  
+XXXXX/urlFileData.zip  
+XXXXX/data  
+XXXXX/data/specdata  
+XXXXX/data/specdata/001.csv  
+XXXXX/data/specdata/002.csv  
+…  
+XXXXX/data/specdata/332.csv  
+  
+4. We scanned the contents of the files. Let's take as an example the reading of the first file.  
+  
+```{r, echo=TRUE}  
+# load the contents of the file into the variable file.temp.
+file.temp = read.csv(file="data/specdata/001.csv", header = TRUE, sep = ",")
+head(file.temp)
 
 ```
   
-2.	We explore the data  
-To view the content, format and perform tests.  
-```{r, echo=TRUE}  
-# load the contents of the file into the variable file.temp.
-file.temp = read.csv(file="specdata/001.csv", header = TRUE, sep = ",")
-head(file.temp)
-```
-  
-We check that the variables are; Date, sulfate, nitrate and ID  
+We check that the variables are; Date, sulfate, nitrate, and ID  
 We also check that there is no data for some NA dates.  
   
-3. Algorithm to determine the level of contamination.  
+5. Create to the Algorithm to determine the level of contamination.  
 -Load the selected file.  
--filtramos by a type of pollutant (sulphate or nitrate) to obtain only useful data, this data we store them in a vector. This vector will be incremented by each processed file.  
-At the end we calculate the mean with the data stored in the vector.  
+-filter by a type of pollutant (sulfate or nitrate) to obtain only useful data, this data we store them in a vector.  
+This vector will be incremented by each processed file.  
+  
+In the end, we calculate the mean with the data stored in the vector.  
+  
+Function created:   
   
 ```{r, echo=TRUE}  
 pollutantmean <- function(path.files, pollutant, id = 0) {
@@ -101,18 +125,20 @@ pollutantmean <- function(path.files, pollutant, id = 0) {
 
 ```
   
-Way to run the function 
+We execute the function to calculate the average summing all the files from 1 to the last 332.  
 ```{r, echo=TRUE}  
-#Pollutantmean ("enter the folder", "pollutant name", "file or #files"
-#example
+#pollutantmean ("specdata", "sulfate", 1:332)
+# example
 pollutantmean ("specdata", "sulfate", 1:10)
 
 ```
-
-
+  
 ## Homework 2  
-
+  
 Write a function that reads a directory full of files and reports the number of completely observed cases in each data file for sulfates and nitrates.  
+  
+Make a sum for each day observed of the variables.  
+  
 ```{r, echo=TRUE}  
 complete  <- function(path.files, id) {
   
@@ -157,10 +183,10 @@ tmp
 
 
 ## Homework 3
-
+  
 Write a function that takes a directory of data files and a threshold for full cases and calculates the correlation between sulfate and nitrate for monitor locations where the number of cases completely.  
   
-The correlation coefficient provides a measure of how two random variables are associated in a "sample".  
+The correlation coefficient provides a measure of how two random variables are associated in a “sample”.  
   
 ```{r, echo=TRUE}
 
@@ -173,5 +199,5 @@ plot(tmp$nobs.sulfate, tmp$nobs.nitrate)
   
 The correlation between the two variables is strong, if one variable grows the other also grows.  
   
-source code: https://github.com/magzupao/datascience01_a
+source code: https://github.com/magzupao/DataSciences-Course2-programming-assignment-1-instructions-air-pollution
 
