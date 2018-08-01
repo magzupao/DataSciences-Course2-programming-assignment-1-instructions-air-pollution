@@ -1,8 +1,8 @@
 #####################################################################
-# DataSciences 
+# Data Science Specialization
 # Marco Guado Zavaleta, mguado@gmail.com
 # Octubre 2016
-# Course 2
+# Course 2:
 # programming-assignment-1-instructions-air-pollution
 # function
 #####################################################################
