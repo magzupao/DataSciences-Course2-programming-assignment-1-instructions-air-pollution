@@ -127,9 +127,9 @@ pollutantmean <- function(path.files, pollutant, id = 0) {
   
 We execute the function to calculate the average summing all the files from 1 to the last 332.  
 ```{r, echo=TRUE}  
-#pollutantmean ("specdata", "sulfate", 1:332)
+#pollutantmean ("data/specdata", "sulfate", 1:332)
 # example
-pollutantmean ("specdata", "sulfate", 1:10)
+pollutantmean ("data/specdata", "sulfate", 1:10)
 
 ```
   
@@ -176,7 +176,7 @@ complete  <- function(path.files, id) {
 }
 
 # Example
-tmp <- complete ("specdata", 1:10)
+tmp <- complete ("data/specdata", 1:10)
 tmp
 
 ```

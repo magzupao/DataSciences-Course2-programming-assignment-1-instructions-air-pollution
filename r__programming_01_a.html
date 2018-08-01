@@ -169,8 +169,7 @@ list.files()</code></pre>
 ##  [9] &quot;r_ programming_01_a.Rmd&quot;                              
 ## [10] &quot;r__programming_01_a.Rmd&quot;                              
 ## [11] &quot;rsconnect&quot;                                            
-## [12] &quot;specdata&quot;                                             
-## [13] &quot;urlFileData.zip&quot;</code></pre>
+## [12] &quot;urlFileData.zip&quot;</code></pre>
 <p>Comments:<br />
 The zip file we downloaded we put a random name (urlFileData.zip), we can put the same name, but in this case we have renamed it.</p>
 <p>unzip(“urlFileData.zip”, exdir = “data”) this command creates a “data” folder and downloads all the files there.</p>
@@ -246,9 +245,9 @@ This vector will be incremented by each processed file.</li>
   return(mean(list.values))
 }</code></pre>
 <p>We execute the function to calculate the average summing all the files from 1 to the last 332.</p>
-<pre class="r"><code>#pollutantmean (&quot;specdata&quot;, &quot;sulfate&quot;, 1:332)
+<pre class="r"><code>#pollutantmean (&quot;data/specdata&quot;, &quot;sulfate&quot;, 1:332)
 # example
-pollutantmean (&quot;specdata&quot;, &quot;sulfate&quot;, 1:10)</code></pre>
+pollutantmean (&quot;data/specdata&quot;, &quot;sulfate&quot;, 1:10)</code></pre>
 <pre><code>## [1] 4.064128</code></pre>
 </div>
 <div id="homework-2" class="section level2">
@@ -291,7 +290,7 @@ pollutantmean (&quot;specdata&quot;, &quot;sulfate&quot;, 1:10)</code></pre>
 }
 
 # Example
-tmp &lt;- complete (&quot;specdata&quot;, 1:10)
+tmp &lt;- complete (&quot;data/specdata&quot;, 1:10)
 tmp</code></pre>
 <pre><code>##    id.file nobs.sulfate nobs.nitrate
 ## 1        1          117          122
