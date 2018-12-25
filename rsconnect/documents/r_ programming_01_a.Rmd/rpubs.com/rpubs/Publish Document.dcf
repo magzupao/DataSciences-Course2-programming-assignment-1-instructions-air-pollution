@@ -1,7 +1,7 @@
 name: Publish Document
 account: rpubs
 server: rpubs.com
-appId: https://api.rpubs.com/api/v1/document/308861/1652f09eb0034fee897a2bae99744921
-bundleId: https://api.rpubs.com/api/v1/document/308861/1652f09eb0034fee897a2bae99744921
-url: http://rpubs.com/magzupao/308861
-when: 1533134117.07031
+appId: https://api.rpubs.com/api/v1/document/451658/49b2a3b88f3240b09a3f5ff8085c8df1
+bundleId: https://api.rpubs.com/api/v1/document/451658/49b2a3b88f3240b09a3f5ff8085c8df1
+url: http://rpubs.com/magzupao/451658
+when: 1545575497.9053
